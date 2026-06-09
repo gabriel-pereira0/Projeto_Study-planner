@@ -49,7 +49,7 @@ A aplicação foi entregue pelo curso com a lógica de estado implementada via *
 
 ```bash
 # Clone o repositório
-git clone https://github.com/seu-usuario/study-planner.git
+git clone https://github.com/gabriel-pereira0/Projeto_Study-planner
 
 # Acesse a pasta do projeto
 cd study-planner
