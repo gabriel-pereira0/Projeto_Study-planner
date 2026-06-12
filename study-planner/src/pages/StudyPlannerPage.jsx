@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectPendingTasks,
@@ -10,6 +10,10 @@ import {
   deleteTask,
 } from '../store/slices/taskSlice';
 import { selectTheme } from '../store/slices/themeSlice';
+import {
+  selectAnalytics,
+  updateAnalytics,
+} from '../store/slices/analyticSlice';
 
 import { EmptyState, ThemeToggle } from '../components/UI';
 import { AddTaskModal, EditTaskModal } from '../components/Modal';
@@ -23,6 +27,11 @@ function StudyPlannerPage() {
   const tasks = useSelector(selectTasks);
   const pendingTasks = useSelector(selectPendingTasks);
   const completedTasks = useSelector(selectCompletedTasks);
+  const analytics = useSelector(selectAnalytics);
+
+  useEffect(() => {
+    dispatch(updateAnalytics(tasks));
+  }, [tasks, dispatch]);
 
   const handleAddTask = () => {
     setIsModalOpen(true);
@@ -90,7 +99,7 @@ function StudyPlannerPage() {
           ) : (
             <div>
               <TaskSection
-                title='Para estudar'
+                title={`Para estudar (${analytics.pendingTasks})`}
                 tasks={pendingTasks}
                 borderColor='gray-600'
                 onToggleComplete={handleToggleComplete}
@@ -99,7 +108,7 @@ function StudyPlannerPage() {
               />
 
               <TaskSection
-                title='Concluído'
+                title={`Concluído (${analytics.completedTasks})`}
                 tasks={completedTasks}
                 borderColor='purple-header'
                 onToggleComplete={handleToggleComplete}
@@ -107,14 +116,29 @@ function StudyPlannerPage() {
                 onDelete={handleDeleteTask}
               />
 
-              <div className='flex justify-center mt-8'>
-                <button
-                  onClick={handleAddTask}
-                  className='w-12 h-12 bg-purple-header hover:bg-purple-dark transition-colors rounded-full flex items-center justify-center'
-                  aria-label='Adicionar tarefa'
-                >
-                  <span className='material-icons text-white text-xl'>add</span>
-                </button>
+              <div className='mt-8'>
+                <div className='flex justify-between items-center mb-4'>
+                  <div className={`text-sm ${theme.textSecondary} gap-2 flex`}>
+                    <span>Total: {analytics.totalTasks}</span>
+                    <span>Concluído: {analytics.completedPercentage}%</span>
+                  </div>
+                  {analytics.overdueTasks > 0 && (
+                    <div className='text-sm text-red-500'>
+                      Atrasados: {analytics.overdueTasks}
+                    </div>
+                  )}
+                </div>
+                <div className='flex justify-center'>
+                  <button
+                    onClick={handleAddTask}
+                    className='w-12 h-12 bg-purple-header hover:bg-purple-dark transition-colors rounded-full flex items-center justify-center'
+                    aria-label='Adicionar tarefa'
+                  >
+                    <span className='material-icons text-white text-xl'>
+                      add
+                    </span>
+                  </button>
+                </div>
               </div>
             </div>
           )}
