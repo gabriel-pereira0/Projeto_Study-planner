@@ -1,29 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  tasks: [
-    {
-      id: 1,
-      title: 'Study for Math Exam',
-      description: 'Review chapters 1-5 and practice problems.',
-      dueDate: '2024-06-15',
-      completed: false,
-    },
-    {
-      id: 2,
-      title: 'Study for Science Exam',
-      description: 'Review notes and complete practice tests.',
-      dueDate: '2024-06-20',
-      completed: false,
-    },
-    {
-      id: 3,
-      title: 'Study for History Exam',
-      description: 'Review timeline and key events.',
-      dueDate: '2024-06-25',
-      completed: true,
-    },
-  ],
+  tasks: [],
 };
 
 const taskSlice = createSlice({
@@ -31,11 +9,11 @@ const taskSlice = createSlice({
   initialState,
   reducers: {
     addTask: (state, action) => {
-      state.tasks.push({
+      const taskWithId = {
         ...action.payload,
         id: Date.now(),
         completed: false,
-      });
+      };
       state.tasks.push(taskWithId);
     },
     toggleTaskComplete: (state, action) => {
