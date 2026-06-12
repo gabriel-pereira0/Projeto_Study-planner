@@ -9,7 +9,8 @@ import {
   editTask,
   deleteTask,
 } from '../store/slices/taskSlice';
-import { useTheme } from '../contexts/ThemeContext';
+import { selectTheme } from '../store/slices/themeSlice';
+
 import { EmptyState, ThemeToggle } from '../components/UI';
 import { AddTaskModal, EditTaskModal } from '../components/Modal';
 import { TaskSection } from '../components/Task';
@@ -58,7 +59,7 @@ function StudyPlannerPage() {
     dispatch(deleteTask(taskId));
   };
 
-  const theme = useTheme();
+  const theme = useSelector(selectTheme);
 
   return (
     <div
