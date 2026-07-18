@@ -1,6 +1,7 @@
 import AddTaskButton from './AddTaskButton';
 import { useSelector } from 'react-redux';
 import { selectTheme } from '../../store/slices/themeSlice';
+import emptyFileImage from '../../assets/empty-file.png';
 
 function EmptyState({ onAddTask }) {
   const theme = useSelector(selectTheme);
@@ -21,7 +22,7 @@ function EmptyState({ onAddTask }) {
             className={`w-20 h-20 border-2 border-dashed ${theme.isDark ? 'border-green-check' : 'border-purple-600'} rounded-lg flex items-center justify-center`}
           >
             <img
-              src='/src/assets/empty-file.png'
+              src={emptyFileImage}
               alt='Empty state'
               className={`w-12 h-12 ${theme.isDark ? 'opacity-60' : 'opacity-80'}`}
               style={{
