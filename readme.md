@@ -1,89 +1,83 @@
 # 📚 Study Planner
 
-> ⚠️ **Observação:** Este repositório não contempla o desenvolvimento da aplicação em si. O projeto base (UI, componentes e funcionalidades) já foi fornecido pronto pelo curso. O foco aqui é **exclusivamente na refatoração do gerenciamento de estado**, substituindo a Context API pelo Redux Toolkit.
+Projeto desenvolvido em **React** com foco na refatoração do gerenciamento de estado da aplicação, substituindo a **Context API** por **Redux Toolkit**.
 
-Projeto desenvolvido durante curso de **Gerenciamento de Estado em React**, com foco na migração de **Context API** para **Redux Toolkit**.
+> ⚠️ **Observação:** A interface, componentes e funcionalidades base da aplicação foram disponibilizados pelo curso. O desenvolvimento realizado neste repositório consiste na refatoração completa do gerenciamento de estado utilizando Redux Toolkit.
 
----
+## 🌐 Projeto Online
 
-## 🎯 Objetivo do Projeto
+👉 **Acesse o projeto:** https://SEU-LINK-VERCEL.app/
 
-O **Study Planner** é uma aplicação de lista de tarefas voltada para estudos. O usuário pode:
+## 📋 Funcionalidades
 
-- ➕ Adicionar tarefas de estudo
-- ✅ Marcar tarefas como concluídas
-- 🗑️ Remover tarefas da lista
+- Adição de tarefas de estudo
+- Marcação de tarefas como concluídas
+- Remoção de tarefas
+- Gerenciamento global de estado com Redux Toolkit
+- Atualização da interface utilizando React Redux
 
-A aplicação foi entregue pelo curso com a lógica de estado implementada via **Context API**. O exercício proposto consiste em **refatorar toda a camada de estado** substituindo a Context API pelo **Redux Toolkit**.
+## 🛠️ Tecnologias utilizadas
 
----
+- React
+- Redux Toolkit
+- React Redux
+- JavaScript
+- Vite
 
-## 🔄 O que foi refatorado
+## 💻 Sobre o projeto
 
-| Antes                         | Depois                                          |
-| ----------------------------- | ----------------------------------------------- |
-| Context API (`createContext`) | Redux Toolkit (`createSlice`, `configureStore`) |
-| `useContext` nos componentes  | `useSelector` e `useDispatch`                   |
-| Provider manual no `App.jsx`  | `<Provider store={store}>` do `react-redux`     |
-| Estado e actions no context   | Slice com `reducers` e `actions` exportadas     |
+Este projeto foi desenvolvido durante um curso de Gerenciamento de Estado em React com o objetivo de substituir a implementação baseada em **Context API** por uma arquitetura utilizando **Redux Toolkit**, aplicando boas práticas para gerenciamento de estado em aplicações React.
 
----
+## 🔄 Refatoração realizada
 
-## 🛠️ Tecnologias
+Durante o desenvolvimento, foram realizadas as seguintes alterações:
 
-- [React](https://react.dev/)
-- [Redux Toolkit](https://redux-toolkit.js.org/)
-- [React Redux](https://react-redux.js.org/)
-- Vite (bundler do curso)
+| Antes                         | Depois                                           |
+| ----------------------------- | ------------------------------------------------ |
+| Context API (`createContext`) | Redux Toolkit (`createSlice` e `configureStore`) |
+| `useContext`                  | `useSelector` e `useDispatch`                    |
+| Provider manual               | `<Provider store={store}>`                       |
+| Estado distribuído no Context | Estado centralizado em um Slice                  |
 
----
+## 🚀 Aprendizados
 
-## 🚀 Como rodar o projeto
+Durante este projeto, pratiquei:
 
-### Pré-requisitos
+- Criação de slices utilizando `createSlice`;
+- Configuração da store com `configureStore`;
+- Gerenciamento de estado global com Redux Toolkit;
+- Utilização dos Hooks `useSelector` e `useDispatch`;
+- Integração do React Redux com aplicações React;
+- Organização de código seguindo boas práticas de gerenciamento de estado.
 
-- Node.js 18+
-- npm ou yarn
+## ▶️ Como executar o projeto
 
-### Instalação
+1. Clone o repositório:
 
 ```bash
-# Clone o repositório
 git clone https://github.com/gabriel-pereira0/Projeto_Study-planner
+```
 
-# Acesse a pasta do projeto
+2. Acesse a pasta do projeto:
+
+```bash
 cd study-planner
+```
 
-# Instale as dependências
+3. Instale as dependências:
+
+```bash
 npm install
 ```
 
-### Instale as dependências do Redux
-
-```bash
-npm install @reduxjs/toolkit react-redux
-```
-
-### Rode o projeto
+4. Execute o projeto:
 
 ```bash
 npm run dev
 ```
 
-Acesse em: `http://localhost:5173`
+5. Abra no navegador:
 
----
-
-## 🧠 Conceitos praticados
-
-- **`createSlice`** — criação do slice com estado inicial, reducers e actions em um único lugar
-- **`configureStore`** — montagem da store combinando os slices
-- **`useSelector`** — leitura do estado global nos componentes
-- **`useDispatch`** — disparo de actions nos componentes
-- **`<Provider>`** — disponibilização da store para toda a árvore de componentes
-
----
-
-## 📝 Aprendizados
-
-Este projeto demonstra na prática como o **Redux Toolkit** simplifica o fluxo de estado em relação à abordagem manual com Context API, eliminando boilerplate e tornando o código mais previsível e fácil de manter em aplicações maiores.
+```text
+http://localhost:5173
+```
